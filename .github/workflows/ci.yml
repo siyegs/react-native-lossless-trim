@@ -45,6 +45,9 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Install package dependencies
+        run: npm install
+
       - name: Install example dependencies
         working-directory: example
         run: npm install
