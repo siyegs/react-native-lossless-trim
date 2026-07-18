@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+lib/
+*.tsbuildinfo
+
+# Native build artifacts
+android/build/
+android/.gradle/
+android/.cxx/
+ios/build/
+ios/Pods/
+*.xcworkspace
+!default.xcworkspace
+
+# Expo / example app
+example/.expo/
+example/android/
+example/ios/
+example/node_modules/
+.expo/
+
+# Logs
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
+.vscode/
+
+# Env / secrets
+.env
+.env.*
