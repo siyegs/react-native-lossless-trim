@@ -1,0 +1,69 @@
+{
+  "name": "react-native-lossless-trim",
+  "version": "0.1.0",
+  "description": "Lossless, ffmpeg-free video trimming for React Native and Expo. Stream-copy passthrough on the platform-native APIs (AVAssetExportSession / MediaMuxer): no re-encode, near-instant, ~zero binary weight.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "expo-module",
+    "video",
+    "trim",
+    "video-trim",
+    "video-editing",
+    "lossless",
+    "passthrough",
+    "no-ffmpeg",
+    "ffmpeg-free",
+    "avassetexportsession",
+    "mediamuxer",
+    "ios",
+    "android"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/siyegs/react-native-lossless-trim.git"
+  },
+  "bugs": {
+    "url": "https://github.com/siyegs/react-native-lossless-trim/issues"
+  },
+  "homepage": "https://github.com/siyegs/react-native-lossless-trim#readme",
+  "author": "Iyegere Success Karboloo",
+  "license": "MIT",
+  "files": [
+    "build",
+    "android",
+    "ios",
+    "src",
+    "expo-module.config.json",
+    "!android/build",
+    "!android/.gradle",
+    "!android/.cxx",
+    "!ios/build",
+    "!**/__tests__",
+    "!**/*.test.ts"
+  ],
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "expo": "~54.0.36",
+    "expo-module-scripts": "^5.0.8",
+    "react": "19.1.0",
+    "react-native": "0.81.6",
+    "typescript": "~5.9.2"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

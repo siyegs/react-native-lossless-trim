@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["LosslessTrimModule"]
+  },
+  "android": {
+    "modules": ["com.reactnativelosslesstrim.LosslessTrimModule"]
+  }
+}
