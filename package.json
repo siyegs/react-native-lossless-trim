@@ -32,7 +32,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/siyegs/react-native-lossless-trim.git"
+    "url": "git+https://github.com/siyegs/react-native-lossless-trim.git"
   },
   "bugs": {
     "url": "https://github.com/siyegs/react-native-lossless-trim/issues"
