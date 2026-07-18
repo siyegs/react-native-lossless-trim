@@ -25,10 +25,10 @@ export interface TrimResult {
 /** Machine-readable code attached to every {@link TrimError}. */
 export type TrimErrorCode =
   /** The native trim operation failed (bad source, unsupported codec, I/O). */
-  | 'ERR_TRIM'
+  | "ERR_TRIM"
   /** `startMs`/`endMs` were not a valid, non-empty, in-order range. */
-  | 'ERR_INVALID_RANGE'
+  | "ERR_INVALID_RANGE"
   /** The source `uri` was empty or not a string. */
-  | 'ERR_INVALID_URI'
+  | "ERR_INVALID_URI"
   /** The native module is not present in this build. */
-  | 'ERR_UNAVAILABLE';
+  | "ERR_UNAVAILABLE";

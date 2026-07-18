@@ -1,4 +1,4 @@
-import { requireOptionalNativeModule } from 'expo-modules-core';
+import { requireOptionalNativeModule } from "expo-modules-core";
 
 /**
  * The raw native binding. Kept intentionally thin: the public {@link trimAsync}
@@ -16,4 +16,6 @@ export interface LosslessTrimNativeModule {
  * Optional lookup so a missing or unregistered native module resolves to `null`
  * instead of throwing at import time. `isAvailable()` reflects this.
  */
-export default requireOptionalNativeModule<LosslessTrimNativeModule>('LosslessTrim');
+export default requireOptionalNativeModule<LosslessTrimNativeModule>(
+  "LosslessTrim",
+);

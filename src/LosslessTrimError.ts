@@ -1,4 +1,4 @@
-import { TrimErrorCode } from './LosslessTrim.types';
+import { TrimErrorCode } from "./LosslessTrim.types";
 
 /**
  * Error thrown by {@link trimAsync}. The `code` field is stable and safe to
@@ -9,7 +9,7 @@ export class TrimError extends Error {
 
   constructor(code: TrimErrorCode, message: string) {
     super(message);
-    this.name = 'TrimError';
+    this.name = "TrimError";
     this.code = code;
     // Restore the prototype chain when compiled down to ES5 targets.
     Object.setPrototypeOf(this, TrimError.prototype);

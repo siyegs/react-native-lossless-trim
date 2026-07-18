@@ -1,9 +1,9 @@
-import LosslessTrimModule from './LosslessTrimModule';
-import { TrimError } from './LosslessTrimError';
-import { TrimOptions, TrimResult } from './LosslessTrim.types';
+import { TrimOptions, TrimResult } from "./LosslessTrim.types";
+import { TrimError } from "./LosslessTrimError";
+import LosslessTrimModule from "./LosslessTrimModule";
 
-export { TrimError } from './LosslessTrimError';
-export { TrimOptions, TrimResult, TrimErrorCode } from './LosslessTrim.types';
+export { TrimError } from "./LosslessTrimError";
+export { TrimOptions, TrimResult, TrimErrorCode } from "./LosslessTrim.types";
 
 /**
  * Whether the native passthrough trimmer is present in this build. Returns
@@ -16,7 +16,7 @@ export function isAvailable(): boolean {
 
 // A native output path may already be a file uri, or (defensively) a bare path.
 function toFileUri(path: string): string {
-  return path.startsWith('file://') || path.startsWith('content://')
+  return path.startsWith("file://") || path.startsWith("content://")
     ? path
     : `file://${path}`;
 }
@@ -40,8 +40,11 @@ export async function trimAsync(
   uri: string,
   options: TrimOptions,
 ): Promise<TrimResult> {
-  if (typeof uri !== 'string' || uri.length === 0) {
-    throw new TrimError('ERR_INVALID_URI', 'A non-empty source uri is required.');
+  if (typeof uri !== "string" || uri.length === 0) {
+    throw new TrimError(
+      "ERR_INVALID_URI",
+      "A non-empty source uri is required.",
+    );
   }
 
   const { startMs, endMs } = options ?? ({} as TrimOptions);
@@ -52,16 +55,16 @@ export async function trimAsync(
     endMs <= startMs
   ) {
     throw new TrimError(
-      'ERR_INVALID_RANGE',
+      "ERR_INVALID_RANGE",
       `Invalid trim range: expected 0 <= startMs < endMs, got startMs=${startMs}, endMs=${endMs}.`,
     );
   }
 
   if (LosslessTrimModule == null) {
     throw new TrimError(
-      'ERR_UNAVAILABLE',
-      'The react-native-lossless-trim native module is not available in this build. ' +
-        'It requires a custom dev client or a release build (it does not run in Expo Go).',
+      "ERR_UNAVAILABLE",
+      "The react-native-lossless-trim native module is not available in this build. " +
+        "It requires a custom dev client or a release build (it does not run in Expo Go).",
     );
   }
 
@@ -71,7 +74,9 @@ export async function trimAsync(
   } catch (error) {
     // Native rejections already carry a code; surface everything else as ERR_TRIM.
     const message =
-      error instanceof Error ? error.message : 'The video could not be trimmed.';
-    throw new TrimError('ERR_TRIM', message);
+      error instanceof Error
+        ? error.message
+        : "The video could not be trimmed.";
+    throw new TrimError("ERR_TRIM", message);
   }
 }
