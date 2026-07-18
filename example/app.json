@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "lossless-trim-example",
+    "slug": "lossless-trim-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "bundleIdentifier": "com.reactnativelosslesstrim.example",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Pick a video to trim in the example app."
+      }
+    },
+    "android": {
+      "package": "com.reactnativelosslesstrim.example"
+    },
+    "plugins": ["expo-video"]
+  }
+}
