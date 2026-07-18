@@ -1,0 +1,27 @@
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
+  id 'expo-module-gradle-plugin'
+}
+
+group = 'com.reactnativelosslesstrim'
+version = '0.1.0'
+
+android {
+  namespace "com.reactnativelosslesstrim"
+  defaultConfig {
+    versionCode 1
+    versionName "0.1.0"
+  }
+  testOptions {
+    unitTests {
+      // TrimTimeline is pure Kotlin; this only guards any stray android.* calls
+      // so the JVM unit tests never need a device or Robolectric.
+      returnDefaultValues = true
+    }
+  }
+}
+
+dependencies {
+  testImplementation 'junit:junit:4.13.2'
+}
