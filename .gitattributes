@@ -1,0 +1,13 @@
+# Normalize all text files to LF in the repo. Keeps the published tarball and
+# Linux CI byte-consistent regardless of the contributor's OS (Windows here).
+* text=auto eol=lf
+
+# Binary assets should never be normalized.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.mp4 binary
+*.mov binary
+*.keystore binary
+*.jar binary
