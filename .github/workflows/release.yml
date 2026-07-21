@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write # enables npm provenance
+      id-token: write # OIDC: authenticates to npm and signs provenance
     steps:
       - uses: actions/checkout@v4
 
@@ -22,6 +22,12 @@ jobs:
         with:
           node-version: 20
           registry-url: "https://registry.npmjs.org"
+
+      # OIDC trusted publishing needs npm 11.5.1+; the Node 20 runner ships npm 10.
+      - name: Upgrade npm for OIDC trusted publishing
+        run: |
+          npm install -g npm@latest
+          npm --version
 
       - name: Install
         run: npm install
@@ -44,7 +50,10 @@ jobs:
             exit 1
           fi
 
+      # No NODE_AUTH_TOKEN: auth comes from npm OIDC trusted publishing, which
+      # mints a short-lived credential from the id-token below. Provenance is
+      # attached automatically. Configured at npmjs.com on this package under
+      # Settings > Trusted Publisher (siyegs/react-native-lossless-trim,
+      # release.yml). Renaming this file breaks publishing until npm is updated.
       - name: Publish
         run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
