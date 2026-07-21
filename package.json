@@ -1,6 +1,6 @@
 {
   "name": "react-native-lossless-trim",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lossless, ffmpeg-free video trimming for React Native and Expo. Stream-copy passthrough on the platform-native APIs (AVAssetExportSession / MediaMuxer): no re-encode, near-instant, ~zero binary weight.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -45,6 +45,7 @@
     "android",
     "ios",
     "src",
+    "CHANGELOG.md",
     "expo-module.config.json",
     "!android/build",
     "!android/.gradle",

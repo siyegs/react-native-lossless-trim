@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-07-21
+
+### Added
+
+- `CHANGELOG.md` is now included in the published package, so the release
+  history is available from the installed module and on npm.
+
+### Changed
+
+- Releases are now published with npm OIDC trusted publishing instead of a
+  long-lived access token. No credential is stored anywhere; the workflow mints
+  a short-lived one per run and attaches provenance automatically.
+
 ## [0.1.0] - 2026-07-21
 
 Initial release.
@@ -39,5 +52,6 @@ Initial release.
   "Platform differences" section of the README.
 - Requires a custom dev client or a release build; it does not run in Expo Go.
 
-[Unreleased]: https://github.com/siyegs/react-native-lossless-trim/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/siyegs/react-native-lossless-trim/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/siyegs/react-native-lossless-trim/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/siyegs/react-native-lossless-trim/releases/tag/v0.1.0
