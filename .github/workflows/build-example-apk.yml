@@ -1,0 +1,65 @@
+name: Build example APK
+
+# Builds a standalone, installable Android APK of the example app on a free
+# Linux runner, so the native trim can be exercised on a real device. This
+# sidesteps both the local Windows gradle breakage and EAS cloud quota: it runs
+# `expo prebuild` + `gradlew assembleRelease` directly. Expo's generated Android
+# project signs the release build with the debug key, so the APK installs and
+# runs standalone (JS is bundled) with no keystore or EAS setup required.
+#
+# Run it from the Actions tab (workflow_dispatch), then download the artifact.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: build-example-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      # Reclaim disk that a full RN + Expo release build can otherwise exhaust.
+      - name: Free runner disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/share/swift /usr/local/share/powershell \
+            /usr/local/share/chromium /opt/hostedtoolcache/CodeQL /opt/google/chrome \
+            /usr/local/.ghcup || true
+          sudo docker image prune --all --force || true
+          df -h /
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install package dependencies
+        run: npm install
+
+      - name: Install example dependencies
+        working-directory: example
+        run: npm install
+
+      - name: Prebuild Android project
+        working-directory: example
+        run: npx expo prebuild -p android --no-install
+
+      - name: Assemble release APK
+        working-directory: example/android
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: lossless-trim-example-apk
+          path: example/android/app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 14
