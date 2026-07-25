@@ -12,6 +12,8 @@ time it takes to copy the bytes.
 [![CI](https://github.com/siyegs/react-native-lossless-trim/actions/workflows/ci.yml/badge.svg)](https://github.com/siyegs/react-native-lossless-trim/actions/workflows/ci.yml)
 [![license](https://img.shields.io/npm/l/react-native-lossless-trim.svg)](./LICENSE)
 
+> **Used in production.** This library is the trim engine in [Mystra](https://mystrahq.com), a shipping social app, verified on real iOS and Android devices as the code that performs every clip trim.
+
 ## Why this exists
 
 Nearly every popular React Native trimming library bundles **ffmpeg**. That
